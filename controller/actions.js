@@ -10,7 +10,7 @@ router.get('/edit_product/:id' , async(req,res)=>{
         Product.findByPk(id)
         .then(Product=> {
             res.render('edit_product' , {
-                pageTitle: 'Welcome admin',
+                pageTitle: 'Welcome bitches',
                 Product:Product,
                 categories:categories
             })
@@ -18,13 +18,13 @@ router.get('/edit_product/:id' , async(req,res)=>{
         })
         .catch(errorr=>{
             res.render('edit_product' , {
-                pageTitle: 'Welcome admin' 
+                pageTitle: 'Welcome bitches' 
             })
         })}
     )
     .catch(errorr=>{
         res.render('edit_product' , {
-            pageTitle: 'Welcome admin' 
+            pageTitle: 'Welcome bitches' 
         })
     })
 })
@@ -34,13 +34,13 @@ router.get('/dashboard' , async(req,res)=>{
     Category.findAll()
     .then(categories=> {
         res.render('index' , {
-            pageTitle: 'Welcome admin',
+            pageTitle: 'Welcome bitches',
             categories:categories
         })
     })
     .catch(errorr=>{
         res.render('index' , {
-            pageTitle: 'Welcome admin' 
+            pageTitle: 'Welcome bitches' 
         })
     })
 })

@@ -3,8 +3,6 @@ const router = express.Router();
 import Product from "../models/product.js";
 import Category from "../models/category.js";
 
-
-//delete category
 router.post('/delete/:id' , async(req,res)=>{
     const id=req.params.id;
     await Category.destroy({ where: { id: id } })
@@ -19,7 +17,6 @@ router.post('/delete/:id' , async(req,res)=>{
     })
 })
 
-//delete prod
 router.post('/delete_prod/:prodid/:catid' , async(req,res)=>{
     const categoryid=req.params.catid;
     const productid=req.params.prodid;
@@ -33,7 +30,6 @@ router.post('/delete_prod/:prodid/:catid' , async(req,res)=>{
         return res.redirect('/product/'+categoryid)
     })
 })
-
 
 router.post('/edit_category/:id' , async(req,res)=>{
     const {categoryname,categorymainImage}=req.body;
@@ -51,10 +47,8 @@ router.post('/edit_category/:id' , async(req,res)=>{
 
 router.post('/edit_product/:id' , async(req,res)=>{
     const {Productname,ProductmainImage,Productprice,unitInStock , productDescription , isAvailable ,CategoryId }=req.body;
-
     const id=req.params.id;
     const catid=CategoryId;
-
     await Product.update({productname:Productname ,productImage:ProductmainImage , productprice:Productprice ,unitInStock:unitInStock ,productDescription:productDescription ,isAvailable:isAvailable ,CategoryId:CategoryId},{ where: { id: id } })
     .then(result =>{
         return res.redirect('/product/'+catid)
@@ -63,8 +57,6 @@ router.post('/edit_product/:id' , async(req,res)=>{
         return res.redirect('/dashboard')
     })
 })
-
-
 
 router.post('/add_product/:id' , async(req,res)=>{
     const {productname,productprice,productImage,productDescription,isAvailable,unitInStock}=req.body;
@@ -89,8 +81,6 @@ router.post('/add_product/:id' , async(req,res)=>{
     })
 })
 
-
-
 router.post('/add_category' , async(req,res)=>{
     const {categoryname,categorymainImage}=req.body;
     Category.create({
@@ -107,7 +97,6 @@ router.post('/add_category' , async(req,res)=>{
     })
 })
 
-
 router.post('/get_prod' , async(req,res)=>{
     const {whatiwrite}=req.body;
     await Product.findOne({ where: { productname: whatiwrite } })
@@ -121,8 +110,4 @@ router.post('/get_prod' , async(req,res)=>{
         return res.redirect('/dashboard')
     })
 })
-
-
-
-
 export default router;

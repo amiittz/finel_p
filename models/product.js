@@ -7,7 +7,6 @@ const Product= database.define("product",{
         autoIncrement:true,
         allowNull:false,
         primaryKey:true
-
     },
     productname:sequelize.STRING,
     productprice:sequelize.DOUBLE,
@@ -16,8 +15,5 @@ const Product= database.define("product",{
     isAvailable:sequelize.BOOLEAN,
     unitInStock:sequelize.INTEGER,
     CategoryId: sequelize.INTEGER
-
 });
-
-
 export default Product;

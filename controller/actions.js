@@ -3,9 +3,6 @@ const router = express.Router();
 import Product from "../models/product.js";
 import Category from "../models/category.js";
 
-
-
-
 router.get('/edit_product/:id' , async(req,res)=>{
     const id = req.params.id
     await Category.findAll()
@@ -30,12 +27,7 @@ router.get('/edit_product/:id' , async(req,res)=>{
             pageTitle: 'Welcome admin' 
         })
     })
-
-
-
-
 })
-
 
 router.get('/dashboard' , async(req,res)=>{
 
@@ -45,19 +37,13 @@ router.get('/dashboard' , async(req,res)=>{
             pageTitle: 'Welcome admin',
             categories:categories
         })
-
     })
     .catch(errorr=>{
         res.render('index' , {
             pageTitle: 'Welcome admin' 
         })
     })
-
-
-
 })
-
-
 
 router.get('/product/:id' , async(req,res)=>{
     const id= req.params.id;
@@ -71,9 +57,7 @@ router.get('/product/:id' , async(req,res)=>{
                 category:category,
                 Products:products
             })
-
         })
-
     })
     .catch(errorr=>{
         res.render('products' , {
@@ -81,8 +65,4 @@ router.get('/product/:id' , async(req,res)=>{
         })
     })
 })
-
-
-
-
 export default router;
